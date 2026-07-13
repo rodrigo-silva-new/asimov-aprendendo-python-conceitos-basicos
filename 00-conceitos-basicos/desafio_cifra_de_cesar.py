@@ -13,6 +13,10 @@
 # um para letra minúsculas e outra para as maiúsculas, e use este
 # string para guiar as substituições.
 
+
+
+# MINHA VERSÃO
+'''
 maiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 minusculas = 'abcdefghijklmnopqrstuvwxyz'
 
@@ -41,6 +45,7 @@ for caractere in cifra:
         texto_cifrado += caractere
 
 print(f'O texto cifrado é: {texto_cifrado}')
+'''
 
 
 
@@ -49,6 +54,36 @@ print(f'O texto cifrado é: {texto_cifrado}')
 
 
 
+# VERSÃO DO PROFESSOR:
+texto = 'Estou aprendendo Python!!!'
+chave = 2
+
+maiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+minusculas = 'abcdefghijklmnopqrstuvwxyz'
+
+cifra = ''
+
+def cifrar_caractere(caractere, seq, chave):
+    indice_atual = seq.index(caractere)
+    novo_indice = indice_atual + chave
+    # Lidar com situção onde o índice está à direita da seq
+    while novo_indice >= len(seq):
+        novo_indice = novo_indice - len(seq)
+    while novo_indice < 0:
+        novo_indice = novo_indice + len(seq)
+
+    return seq[novo_indice]
+
+for caractere in texto:
+    if caractere in minusculas:
+        caractere_cifra = cifrar_caractere(caractere, minusculas, chave)
+    elif caractere in maiusculas:
+        caractere_cifra = cifrar_caractere(caractere, maiusculas, chave)
+    else:
+        caractere_cifra = caractere
+    cifra += caractere_cifra
+
+print(cifra)
 
 
 
